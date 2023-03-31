@@ -1,8 +1,8 @@
 
-function getMousePos(canvas, evt) {
+function getMousePos(canvas, e) {
     const rect = canvas.getBoundingClientRect()
-    const x = evt.clientX - rect.left
-    const y = evt.clientY - rect.top
+    const x = e.clientX - rect.left
+    const y = e.clientY - rect.top
     console.log("x: " + x + " y: " + y)
     return {x: x, y: y};
 }
