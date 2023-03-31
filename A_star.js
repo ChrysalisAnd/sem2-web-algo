@@ -28,7 +28,7 @@ class Maze {
   draw() {
     maze.width = this.size;
     maze.height = this.size;
-    maze.style.background = "black";
+    maze.style.background = "#E5FCFF";
     current.visited = true;
     
     for (let r = 0; r < this.rows; r++) {
@@ -85,8 +85,8 @@ class Cell {
     let x = (this.colNum * size) / columns;
     let y = (this.rowNum * size) / rows;
     ctx.strokeStyle = "#050505";
-    ctx.fillStyle = "#0066cc";
-    ctx.lineWidth = 2;
+    ctx.fillStyle = "#E5FCFF";
+    ctx.lineWidth = 1;
     if (this.walls.topWall) this.drawTopWall(x, y, size, columns, rows);
     if (this.walls.rightWall) this.drawRightWall(x, y, size, columns, rows);
     if (this.walls.bottomWall) this.drawBottomWall(x, y, size, columns, rows);
@@ -96,6 +96,6 @@ class Cell {
     }
   }
 }
-let newMaze = new Maze(600, 50, 50);
+let newMaze = new Maze(600, 15, 15);
 newMaze.setup();
 newMaze.draw();
