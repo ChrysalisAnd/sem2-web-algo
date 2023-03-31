@@ -41,7 +41,7 @@ class Maze {
 }
 
 class Cell {
-  constructor(rowNum, colNum, parentGrid, parentSize) {
+  constructor(rowNum, colNum) {
     this.rowNum = rowNum;
     this.colNum = colNum;
     this.visited = false;
