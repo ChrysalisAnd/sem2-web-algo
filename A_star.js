@@ -29,7 +29,6 @@ class Maze {
     maze.width = this.size;
     maze.height = this.size;
     maze.style.background = "#E5FCFF";
-    current.visited = true;
     
     for (let r = 0; r < this.rows; r++) {
       for (let c = 0; c < this.columns; c++) {
@@ -85,7 +84,6 @@ class Cell {
     let x = (this.colNum * size) / columns;
     let y = (this.rowNum * size) / rows;
     ctx.strokeStyle = "#050505";
-    ctx.fillStyle = "#E5FCFF";
     ctx.lineWidth = 1;
     if (this.walls.topWall) this.drawTopWall(x, y, size, columns, rows);
     if (this.walls.rightWall) this.drawRightWall(x, y, size, columns, rows);
