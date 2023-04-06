@@ -9,7 +9,7 @@ function getMousePos(canvas, evt) {
 
 function drawPoint(canvas, ctx, e) {
     let { x, y } = getMousePos(canvas, e);
-    let r = 3;
+    let r = 10;
     ctx.fillRect(x - r/2, y - r/2, r, r);
 }
 

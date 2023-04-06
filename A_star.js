@@ -5,10 +5,10 @@ let ctx = maze.getContext('2d');
 let current;
 
 class Maze {
-  constructor(size, rows, columns) {
-    this.size = size;
-    this.columns = columns;
-    this.rows = rows;
+  constructor(n) {
+    this.size = Math.floor(300 / n) * n;
+    this.columns = n;
+    this.rows = n;
     this.grid = [];
     this.stack = [];
   }
@@ -84,7 +84,7 @@ class Cell {
     let x = (this.colNum * size) / columns;
     let y = (this.rowNum * size) / rows;
     ctx.strokeStyle = "#050505";
-    ctx.lineWidth = 1;
+    ctx.lineWidth = 0;
     if (this.walls.topWall) this.drawTopWall(x, y, size, columns, rows);
     if (this.walls.rightWall) this.drawRightWall(x, y, size, columns, rows);
     if (this.walls.bottomWall) this.drawBottomWall(x, y, size, columns, rows);
@@ -94,6 +94,6 @@ class Cell {
     }
   }
 }
-let newMaze = new Maze(600, 15, 15);
+let newMaze = new Maze(3);
 newMaze.setup();
 newMaze.draw();
