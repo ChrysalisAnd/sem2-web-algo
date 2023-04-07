@@ -1,7 +1,7 @@
 // Видео человека Conor Bailey https://www.youtube.com/watch?v=nHjqkLV_Tp0&t=721s
 let maze = document.querySelector(".maze");
 let ctx = maze.getContext('2d');
-
+const COLORS = ["#E5FCFF", "#228B22", "#FFD700", "#B22222"];
 let current;
 
 class Maze {
@@ -40,10 +40,10 @@ class Maze {
 }
 
 class Cell {
-  constructor(rowNum, colNum) {
+  constructor(rowNum, colNum, color) {
     this.rowNum = rowNum;
     this.colNum = colNum;
-    this.visited = false;
+    this.color = COLORS[0];
     this.walls = {
       topWall: true,
       rightWall: true,
@@ -94,6 +94,9 @@ class Cell {
     }
   }
 }
-let newMaze = new Maze(3);
+function changeColorOnClick(){
+  
+}
+let newMaze = new Maze(11);
 newMaze.setup();
 newMaze.draw();
