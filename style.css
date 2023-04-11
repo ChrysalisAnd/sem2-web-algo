@@ -14,3 +14,15 @@ canvas {
     position: relative;
     left: 100px;
 }
+
+
+#clusterCountDiv {
+    position: relative;
+    left: 200px;
+    font-size: 30px;
+}
+
+#resetButton {
+    position: relative;
+    left: 50;
+}

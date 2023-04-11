@@ -12,5 +12,23 @@
             Error displaying canvas!
         </canvas>
         <script src="clustering.js" ></script>
+        <div id = clusterCountDiv>
+            <input type="range" id="clusterCount" name="clusterCount"
+                min="1" max="10" step="1" list="markers">
+            <label for="volume">Cluster Count</label>
+            <datalist id="markers">
+            <option value="1"></option>
+            <option value="2"></option>
+            <option value="3"></option>
+            <option value="4"></option>
+            <option value="5"></option>
+            <option value="6"></option>
+            <option value="7"></option>
+            <option value="8"></option>
+            <option value="9"></option>
+            <option value="10"></option>
+            </datalist>
+            <button id="resetButton" name="resetButton">Reset</button>
+        </div>
     </body>
 </html>

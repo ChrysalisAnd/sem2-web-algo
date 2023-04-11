@@ -134,8 +134,7 @@ function update(canvas, ctx, points, centroids, e) {
 }
 
 
-
-function main() {
+function clustering() {
     const canvas = document.getElementById("canvas");
     const ctx = canvas.getContext("2d");
     let points = new Array;
@@ -143,6 +142,11 @@ function main() {
     canvas.addEventListener('mousedown', function(e) {
         update(canvas, ctx, points, centroids, e);
     });
+}
+
+
+function main() {
+    clustering();
 
 }
 
