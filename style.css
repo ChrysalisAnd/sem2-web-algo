@@ -15,7 +15,7 @@ canvas {
     left: 100px;
 }
 
-
+/* clustering */
 #clusterCountDiv {
     position: relative;
     left: 200px;
@@ -26,3 +26,6 @@ canvas {
     position: relative;
     left: 50;
 }
+
+
+/* neuronet */
