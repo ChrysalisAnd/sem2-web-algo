@@ -20,7 +20,6 @@
             <div id="right">
                 <div id="playground">
                     <canvas id="canvas" width="150" height="150"></canvas>
-                    <div id="prediction"></div>
                 </div>
                 <div class="buttonbar">
                     <button type="button" id="predict">Predict</button>
@@ -37,7 +36,6 @@
             const predictButton = document.getElementById("predict");
             const clearButton = document.getElementById("clear");
             const canvas = document.getElementById("canvas");
-            const prediction = document.getElementById("prediction");
 
             canvas.style.backgroundColor = "black";
             const ctx = canvas.getContext("2d");

@@ -303,8 +303,6 @@ function createDownloadLink() {
         JSON.stringify(weights))}">Download model weights</a>`;
 }
 
-/* UI helper functions */
-
 function enableAllButtons() {
   trainButton.disabled = false;
   testButton.disabled = false;

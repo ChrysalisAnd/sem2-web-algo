@@ -135,7 +135,7 @@ function update(canvas, ctx, points, centroids, e) {
 
 
 function clustering() {
-    const canvas = document.getElementById("canvas");
+    const canvas = document.getElementById("canvasCluster");
     const ctx = canvas.getContext("2d");
     let points = new Array;
     let centroids = generateCentroids(canvas);
