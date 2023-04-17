@@ -1,0 +1,50 @@
+<!DOCTYPE html>
+<html lang="en">
+    <head>
+        <meta charset="UTF-8">
+        <link href="../style.css" rel="stylesheet">
+        <title>Genetic Salesman</title>
+    </head>
+
+    <body>
+        <div id="outer">
+            <div id="left">
+                <div class="buttonbar">
+                    <button type="evolve" id="evolve">Evolve</button>
+                    <button type="stop" id="stop">Stop</button>
+                    <button type="button" id="clear">Clear</buttonl>                   
+                </div>
+                <div id="status"></div>
+            </div>
+            <div id="right">
+                <div id="playground">
+                    <canvas id="canvas" width="400" height="400"></canvas>
+                </div>
+           </div>
+        </div>
+        <script type="text/javascript">
+            const status = document.getElementById("status");
+            const evolveButton = document.getElementById("evolve");
+            const stopButton = document.getElementById("stop");
+            const clearButton = document.getElementById("clear");
+            const canvas = document.getElementById("canvas");
+
+            const ctx = canvas.getContext("2d");
+        </script>
+        <script src="genetic_algo.js" ></script>
+        <script type="text/javascript">
+            evolveButton.addEventListener("click", evolve);
+            stopButton.addEventListener("click", stop_func);
+            clearButton.addEventListener("click", clear);
+
+
+            if (ctx) {
+                ctx.lineCap = "round";
+                ctx.lineWidth = 5;
+            }
+
+
+            canvas.addEventListener("mousedown", update);
+        </script>
+    </body>
+</html>
