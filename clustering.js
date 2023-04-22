@@ -154,5 +154,13 @@ function main() {
     clustering();
 
 }
+resetButton.addEventListener("click", reset);
+
+slider.addEventListener("change", () => {
+    console.log(slider.value);
+    CLUSTERCOUNT = slider.value;
+    reset();
+});
+
 
 main();

@@ -37,21 +37,11 @@
             
         </div>
         </div>
-        <script src="clustering.js" ></script>
         <script>
             let slider = document.getElementById("clusterCount");
             let resetButton = document.getElementById("resetButton");
 
-            resetButton.addEventListener("click", reset);
-            /*slider.oninput = () => {
-                CLUSTERCOUNT = this.value;
-                console.log(CLUSTERCOUNT);
-            }*/
-            slider.addEventListener("change", () => {
-                console.log(slider.value);
-                CLUSTERCOUNT = slider.value;
-                reset();
-            });
         </script>
+        <script src="clustering.js" ></script>
         </body>
 </html>
