@@ -1,7 +1,6 @@
-// Видео человека Conor Bailey https://www.youtube.com/watch?v=nHjqkLV_Tp0&t=721s
 let maze = document.querySelector(".maze");
 let ctx = maze.getContext('2d');
-const COLORS = ["#E5FCFF", "#FFD700", "#228B22", "#B22222", '#383e70'];
+const COLORS = ["#E5FCFF", "#333333", "#228B22", "#B22222", '#383e70'];
 let current;
 let inputSize = document.querySelector("#maze_size");
 
@@ -20,6 +19,7 @@ class Maze {
           let cell = new Cell(r, c);
           cell.color = COLORS[0];
           cell.colorNum = 0;
+          cell.deadend = 0;
           row.push(cell);
       }
       this.grid.push(row);
@@ -39,11 +39,12 @@ class Maze {
 }
 
 class Cell {
-  constructor(rowNum, colNum, color, colorNum) {
+  constructor(rowNum, colNum, color, colorNum, deadend) {
     this.rowNum = rowNum;
     this.colNum = colNum;
     this.color = color;
     this.colorNum = colorNum;
+    this.deadend = deadend;
     this.walls = {
       topWall: true,
       rightWall: true,
@@ -144,44 +145,53 @@ function SolveTheMaze(){
   let cur = (startR) * mazeSize + startC + 1;
   stack.push(cur)
   let fin = (finishR) * mazeSize + finishC + 1;
-  while (stack.length != 0 & isFound == 0){
+  while (stack.length != 0 || isFound == 0){
     cur = stack.at(-1);
-    newMaze.grid[Math.floor((cur - 1) / mazeSize)][(cur - 1) % mazeSize].color = COLORS[4];
-    newMaze.grid[Math.floor((cur - 1) / mazeSize)][(cur - 1) % mazeSize].show(newMaze.size, newMaze.rows, newMaze.columns);
-    console.log(stack)
+    console.log(cur)
     if (cur === fin){
       isFound = 1;
       stack.length = 0;
       break
     }
     else{
+      newMaze.grid[Math.floor((cur - 1) / mazeSize)][(cur - 1) % mazeSize].color = COLORS[4];
+      newMaze.grid[Math.floor((cur - 1) / mazeSize)][(cur - 1) % mazeSize].show(newMaze.size, newMaze.rows, newMaze.columns);
       let unvisited = 0;
       if (Math.floor((cur - 1) / mazeSize) - 1 > -1){
-        if (newMaze.grid[Math.floor((cur - 1) / mazeSize) - 1][(cur - 1) % mazeSize].color != COLORS[1]){
+        if (newMaze.grid[Math.floor((cur - 1) / mazeSize) - 1][(cur - 1) % mazeSize].color != COLORS[1] 
+        & !(stack.includes(cur - mazeSize))
+        & !(newMaze.grid[Math.floor((cur - 1) / mazeSize) - 1][(cur - 1) % mazeSize].deadend == 1)){
           stack.push(cur - mazeSize)
           unvisited += 1;
         }
       }
-      if (Math.floor((cur - 1) / mazeSize) + 1 < mazeSize){
-        if (newMaze.grid[Math.floor((cur - 1) / mazeSize) + 1][(cur - 1) % mazeSize].color != COLORS[1]){
-          stack.push(cur + mazeSize)
-          unvisited += 1;
-        }
-      }
       if ((cur - 1) % mazeSize - 1 > -1){
-        if (newMaze.grid[Math.floor((cur - 1) / mazeSize)][(cur - 1) % mazeSize - 1].color != COLORS[1]){
+        if (newMaze.grid[Math.floor((cur - 1) / mazeSize)][(cur - 1) % mazeSize - 1].color != COLORS[1] 
+        & !(stack.includes(cur - 1))
+        & !(newMaze.grid[Math.floor((cur - 1) / mazeSize)][(cur - 1) % mazeSize - 1].deadend == 1)){
           stack.push(cur - 1)
           unvisited += 1;
         }
       }
+      if (Math.floor((cur - 1) / mazeSize) + 1 < mazeSize){
+        if (newMaze.grid[Math.floor((cur - 1) / mazeSize) + 1][(cur - 1) % mazeSize].color != COLORS[1]
+        & !(stack.includes(cur + mazeSize))
+        & !(newMaze.grid[Math.floor((cur - 1) / mazeSize) + 1][(cur - 1) % mazeSize].deadend == 1)){
+          stack.push(cur + mazeSize)
+          unvisited += 1;
+        }
+      }
       if ((cur - 1) % mazeSize + 1 < mazeSize){
-        if (newMaze.grid[Math.floor((cur - 1) / mazeSize)][(cur - 1) % mazeSize + 1].color != COLORS[1]){
+        if (newMaze.grid[Math.floor((cur - 1) / mazeSize)][(cur - 1) % mazeSize + 1].color != COLORS[1]
+        & !(stack.includes(cur + 1))
+        & !(newMaze.grid[Math.floor((cur - 1) / mazeSize)][(cur - 1) % mazeSize + 1].deadend == 1)){
           stack.push(cur + 1)
           unvisited += 1;
         }
       }
       if (unvisited === 0){
         stack.pop();
+        newMaze.grid[Math.floor((cur - 1) / mazeSize)][(cur - 1) % mazeSize].deadend = 1;
       }
     }
   }
