@@ -1,7 +1,7 @@
-
+//reference https://towardsdatascience.com/evolution-of-a-salesman-a-complete-genetic-algorithm-tutorial-for-python-6fe5d2b3ca35
 const RADIUS = 7;
-const POPULATIONSIZE = 20;
-const ELITESIZE = 7;
+const POPULATIONSIZE = 30;
+const ELITESIZE = 10;
 const MUTATIONRATE = 0.05;
 
 let running = false;
@@ -265,26 +265,25 @@ async function evolve() {
             evol.bestIndivid.route = bestRoute;
         }
 
-        if (iter % 1000 == 0) {
+        if (iter % 10 == 0) {
             status.innerHTML += "iteration: " + iter + "<br>";
-            status.innerHTML += "total best fitness: " + evol.bestIndivid.fitness.toFixed(2) + "<br>";
+            //status.innerHTML += "total best fitness: " + evol.bestIndivid.fitness.toFixed(2) + "<br>";
             status.innerHTML += "best current generation fitness: " + evol.fitnessResults[0].toFixed(2) + "<br><br>";
             //console.log(iter);
             //console.log(evol.bestIndivid.route);
             //console.log(evol.bestIndivid.fitness);
             //console.log(evol.fitnessResults[0]);
-
             update(bestRoute);
             await sleep(500);
-            update(evol.bestIndivid.route);
-            await sleep(250);
+            //update(evol.bestIndivid.route);
+            //await sleep(250);
         }
         evol.population = pop;
         evol.indxSorted = [];
         evol.fitnessResults = {};
         iter++;
     }
-    update(evol.bestIndivid.route);
+    //update(evol.bestIndivid.route);
 
     //console.log(children);
     //console.log(newPop);
@@ -308,7 +307,6 @@ function drawPoint(point) {
 }
 
 function drawRoute(route) {
-    //route needs to be passed as arg or smth
     ctx.beginPath();
     ctx.moveTo(route[0].x, route[0].y);
     for (let i = 1; i < route.length; i++) {
