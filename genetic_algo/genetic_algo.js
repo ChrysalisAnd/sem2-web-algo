@@ -284,6 +284,7 @@ async function evolve() {
         iter++;
     }
     //update(evol.bestIndivid.route);
+    //status.innerHTML += "total best fitness: " + evol.bestIndivid.fitness.toFixed(2) + "<br>";
 
     //console.log(children);
     //console.log(newPop);
