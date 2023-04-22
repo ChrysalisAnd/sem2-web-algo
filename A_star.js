@@ -130,11 +130,11 @@ function SolveTheMaze(){
   let finishC = 0;
   for (let r = 0; r < mazeSize + 0; r++) {
     for (let c = 0; c < mazeSize + 0; c++) {
-      if (newMaze.grid[r][c].colorNum === 2){
+      if (newMaze.grid[r][c].colorNum == 2){
         startR = r;
         startC = c;
       }
-      if (newMaze.grid[r][c].colorNum === 3){
+      if (newMaze.grid[r][c].colorNum == 3){
         finishR = r;
         finishC = c;
       }
@@ -148,7 +148,7 @@ function SolveTheMaze(){
   while (stack.length != 0 || isFound == 0){
     cur = stack.at(-1);
     console.log(cur)
-    if (cur === fin){
+    if (cur == fin){
       isFound = 1;
       stack.length = 0;
       break
@@ -189,7 +189,7 @@ function SolveTheMaze(){
           unvisited += 1;
         }
       }
-      if (unvisited === 0){
+      if (unvisited == 0){
         stack.pop();
         newMaze.grid[Math.floor((cur - 1) / mazeSize)][(cur - 1) % mazeSize].deadend = 1;
       }
