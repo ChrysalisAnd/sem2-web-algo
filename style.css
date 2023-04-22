@@ -1,5 +1,19 @@
 h1 {
     font-size: 60px;
+    display: flex;
+    flex-direction: row;
+    width: 50%;
+    align-items: center;
+}
+
+h2 {
+    font-size: 60px;
+    display: flex;
+    flex-direction: row;
+    width: 50%;
+    text-align: center;
+    justify-content: center;
+    align-items: center;
 }
 
 li {
@@ -12,7 +26,7 @@ li {
 #canvasCluster {
     border: 1px solid black;
     position: relative;
-    left: 100px;
+    /*left: 100px;*/
 }
 
 #canvas {
@@ -21,14 +35,10 @@ li {
 
 /* clustering */
 #clusterCountDiv {
-    position: relative;
-    left: 200px;
-    font-size: 30px;
-}
-
-#resetButton {
-    position: relative;
-    left: 50;
+    display: flex;
+    flex-direction: row;
+    width: 20%;
+    align-items: center;
 }
 
 

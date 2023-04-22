@@ -1,5 +1,5 @@
 const RADIUS = 7;
-const CLUSTERCOUNT = 3;
+let CLUSTERCOUNT = 7;
 const COLORS = ["#000000", "#FF0000", "#00FF00", "#0000FF", "#D7DF01",
  "#FF00FF", "#00FFFF", "#8A4B08", "#F5A9E1", "#A4A4A4"]
 // 0 - black, 1 - red, 2 - green, 3 - blue, 4 - yellow,
@@ -117,6 +117,7 @@ function kMeans(points, centroids) {
     //console.log(iterationCount);
 }
 
+
 function update(canvas, ctx, points, centroids, e) {
     ctx.clearRect(0, 0, canvas.width, canvas.height);
     points = addPoint(points, canvas, e);
@@ -142,8 +143,12 @@ function clustering() {
     canvas.addEventListener('mousedown', function(e) {
         update(canvas, ctx, points, centroids, e);
     });
+
 }
 
+function reset() {
+    main();
+}
 
 function main() {
     clustering();

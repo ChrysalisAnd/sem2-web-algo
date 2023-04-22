@@ -34,17 +34,19 @@
         <script src="genetic_algo.js" ></script>
         <script type="text/javascript">
             evolveButton.addEventListener("click", evolve);
-            stopButton.addEventListener("click", stop_func);
+            stopButton.addEventListener("click", stopFunc);
             clearButton.addEventListener("click", clear);
 
 
             if (ctx) {
                 ctx.lineCap = "round";
-                ctx.lineWidth = 5;
+                ctx.lineWidth = 3;
             }
 
 
-            canvas.addEventListener("mousedown", update);
+
+
+            canvas.addEventListener("mousedown", addPoint);
         </script>
     </body>
 </html>

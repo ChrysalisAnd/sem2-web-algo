@@ -7,11 +7,17 @@
     </head>
 
     <body>
-        <h1>Clustering</h1>
-        <canvas id="canvasCluster" width="500" height="500">
-            Error displaying canvas!
-        </canvas>
-        <script src="clustering.js" ></script>
+        <div id="left">
+        <h2>Clustering</h2>
+        <div class="buttonbar">
+        <button id="resetButton" name="resetButton">Reset</button>
+        </div>
+        </div>
+        <div id="right">
+
+        <div id="playground">
+            <canvas id="canvasCluster" width="300" height="300"> </canvas>
+        </div>
         <div id = clusterCountDiv>
             <input type="range" id="clusterCount" name="clusterCount"
                 min="1" max="10" step="1" list="markers">
@@ -28,7 +34,19 @@
             <option value="9"></option>
             <option value="10"></option>
             </datalist>
-            <button id="resetButton" name="resetButton">Reset</button>
+            
         </div>
-    </body>
+        </div>
+        <script src="clustering.js" ></script>
+        <script>
+            let slider = document.getElementById("clusterCount");
+            let resetButton = document.getElementById("resetButton");
+
+            resetButton.addEventListener("click", reset);
+            slider.oninput = () => {
+                CLUSTERCOUNT = this.value;
+                console.log(CLUSTERCOUNT);
+            }
+        </script>
+        </body>
 </html>
