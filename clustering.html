@@ -43,10 +43,15 @@
             let resetButton = document.getElementById("resetButton");
 
             resetButton.addEventListener("click", reset);
-            slider.oninput = () => {
+            /*slider.oninput = () => {
                 CLUSTERCOUNT = this.value;
                 console.log(CLUSTERCOUNT);
-            }
+            }*/
+            slider.addEventListener("change", () => {
+                console.log(slider.value);
+                CLUSTERCOUNT = slider.value;
+                reset();
+            });
         </script>
         </body>
 </html>
